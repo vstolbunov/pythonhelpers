@@ -1,34 +1,34 @@
-def mergeCSVFiles(filesToMerge,fileToWrite,singleHeader=False):
+def merge_csv_files(files_to_merge,file_to_write,single_header=False):
     """This function merges a list of .csv files into a single file.
     Inputs:
-        filesToMerge - list of strings, each a file name
-        singleHeader - (False) if all files have same header, only one is used
+        files_to_merge - list of strings, each a file name
+        single_header - (False) if all files have same header, only one is used
     Outputs:
-        fileToWrite  - string, file name of output file
+        file_to_write  - string, file name of output file
     """
     
     import csv
     rows = []
 
     # if all files have same header, read it from first file in list
-    if (singleHeader):
-        reader = csv.reader(open(filesToMerge[0], "rb"))
+    if (single_header):
+        reader = csv.reader(open(f[0], "rb"))
         headRow = reader.next()
     
     # for each file name in the list
-    for f in filesToMerge:
+    for f in files_to_merge:
         reader = csv.reader(open(f, "rb")) # open the file
-        if (singleHeader): # skip the header if singleHeader is set
+        if (single_header): # skip the header if single_header is set
             reader.next()
         # for each subsequent row
         for row in reader:
             rows.append(row) # append to rows collection
 
     # open output file
-    with open(fileToWrite, "w") as csvfile:
+    with open(file_to_write, "w") as csvfile:
         writer = csv.writer(csvfile, delimiter=',',quoting=csv.QUOTE_MINIMAL)
-        # if singleHeader, write header
-        if (singleHeader):
+        # if single_header, write header
+        if (single_header):
             writer.writerow(headRow)
         # write each row
         writer.writerows(rows)
