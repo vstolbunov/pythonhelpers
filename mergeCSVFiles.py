@@ -6,7 +6,6 @@ def merge_csv_files(files_to_merge,file_to_write,single_header=False):
     Outputs:
         file_to_write  - string, file name of output file
     """
-    
     import csv
     rows = []
 
