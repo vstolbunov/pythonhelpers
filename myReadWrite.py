@@ -1,4 +1,4 @@
-def wpickle(x,fname):
+def WritePickle(x,fname):
     """Writes the data in x to a pickle-formatted file named fname.
     Inputs:
         x = array to save to file
@@ -9,7 +9,7 @@ def wpickle(x,fname):
     pickle.dump(x,f)
     f.close()
     
-def rpickle(fname):
+def ReadPickle(fname):
     """Reads the data in pickle-formatted file fname and returns it.
     Inputs:
         fname = string, name of pickle file to read from
@@ -23,7 +23,7 @@ def rpickle(fname):
     f.close()
     return x
     
-def wnumpy(x,fname):
+def WriteNumpy(x,fname):
     """Writes the data in x to a numpy-formatted file named fname.
     Inputs:
         x = array to save to file
@@ -33,7 +33,7 @@ def wnumpy(x,fname):
     import numpy as np
     np.save(fname,x)
     
-def rnumpy(fname):
+def ReadNumpy(fname):
     """Reads the data in numpy-formatted file fname and returns it.
     
     Inputs:
@@ -46,7 +46,7 @@ def rnumpy(fname):
     x = np.load(fname)
     return x
     
-def wnc(x,xname,xtype,xdims,xdimnames,units,history,fname):
+def WriteNetcdf(x,xname,xtype,xdims,xdimnames,units,history,fname):
     """Writes the data in x to a netcdf file. Up to 3D.
     
     Inputs:
@@ -80,7 +80,7 @@ def wnc(x,xname,xtype,xdims,xdimnames,units,history,fname):
     a.units = units
     f.close()
     
-def rnc(fname,varname):
+def ReadNetcdf(fname,varname):
     """Reads the variable varname in the netcdf file fname.
     
     Inputs:
